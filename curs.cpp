@@ -1,9 +1,9 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "graphics.h"
 
-void BubbleSort(int a[], int n){ // пузырьковая сортировка
+void BubbleSort(int a[], int n){ // РїСѓР·С‹СЂСЊРєРѕРІР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 	 for(int i = 0; i < n-1; i++){
 	 		 for(int j = n; j >= i+1; j--){
 			 		 if(a[j] < a[j-1]){
@@ -15,7 +15,7 @@ void BubbleSort(int a[], int n){ // пузырьковая сортировка
      }	   	 
 }
 
-void FillRand(int mass[], int N){ // случайное заполнение без повторов
+void FillRand(int mass[], int N){ // СЃР»СѓС‡Р°Р№РЅРѕРµ Р·Р°РїРѕР»РЅРµРЅРёРµ Р±РµР· РїРѕРІС‚РѕСЂРѕРІ
     int n,k;
     for(int i = 0; i <= N; i++){
             metka:
@@ -29,7 +29,7 @@ void FillRand(int mass[], int N){ // случайное заполнение без повторов
     }    
 }
 
-int RunNumber(int a[], int n){ // количество серий в массиве, используется для определения победы
+int RunNumber(int a[], int n){ // РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРµСЂРёР№ РІ РјР°СЃСЃРёРІРµ, РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґС‹
      int k = 0,s = 1; 
      for(int i = 0; i < n-1; i++){
              if(a[i]<a[i+1]) k++;        
@@ -39,9 +39,9 @@ int RunNumber(int a[], int n){ // количество серий в массиве, используется для о
      return s;
 }
 
-void DrawNew(int mass[], int N){ // рисование игрового поля
+void DrawNew(int mass[], int N){ // СЂРёСЃРѕРІР°РЅРёРµ РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ
      int x = 0, y = 0; 
-     int sq = 40; // размер квадратиков
+     int sq = 40; // СЂР°Р·РјРµСЂ РєРІР°РґСЂР°С‚РёРєРѕРІ
      char ch[5];
      for(int i = 0; i <= N; i++){
              if(mass[i] != 0)
@@ -49,17 +49,17 @@ void DrawNew(int mass[], int N){ // рисование игрового поля
              else setfillstyle(1,0);
              bar(x,y,x+sq,y+sq);
              rectangle(x,y,x+sq,y+sq);
-             if(mass[i] != 0){ // заполнение квадратов
+             if(mass[i] != 0){ // Р·Р°РїРѕР»РЅРµРЅРёРµ РєРІР°РґСЂР°С‚РѕРІ
                         setbkcolor(15);
                         setcolor(0);
-                        if(mass[i] >= 10)   // вывод текста внутри квадрата
+                        if(mass[i] >= 10)   // РІС‹РІРѕРґ С‚РµРєСЃС‚Р° РІРЅСѓС‚СЂРё РєРІР°РґСЂР°С‚Р°
                                    outtextxy(x+sq/4-5,y+sq/4,itoa(mass[i],ch,10));
                         else outtextxy(x+sq/4,y+sq/4,itoa(mass[i],ch,10));
              } 
-             if((i%4==3) && (N == 15)){ x=0; y+=sq; } // условие начала новой строки при 15
-             else if((i==2 || i==5) && (N == 8)){ x=0; y+=sq; } // при 8
-             else if(((i+1)%5==0)&&(N == 24)){ x=0; y+=sq; }  // при 24
-             else if(((i+1)%10==0)&&(N == 99)){ x=0; y+=sq; } // при 99
+             if((i%4==3) && (N == 15)){ x=0; y+=sq; } // СѓСЃР»РѕРІРёРµ РЅР°С‡Р°Р»Р° РЅРѕРІРѕР№ СЃС‚СЂРѕРєРё РїСЂРё 15
+             else if((i==2 || i==5) && (N == 8)){ x=0; y+=sq; } // РїСЂРё 8
+             else if(((i+1)%5==0)&&(N == 24)){ x=0; y+=sq; }  // РїСЂРё 24
+             else if(((i+1)%10==0)&&(N == 99)){ x=0; y+=sq; } // РїСЂРё 99
              else x+=sq;            
      }
 }
@@ -126,7 +126,7 @@ int DrawMenu(){
     bar(220,240,420,270); 
     outtextxy(260,245,"4) 10 x 10");
     bar(220,280,420,310); 
-    outtextxy(260,285,"5) Рейтинг");
+    outtextxy(260,285,"5) Р РµР№С‚РёРЅРі");
     setbkcolor(0);
     int ch = getch();
     switch(ch){case 49: return 8; break;
@@ -142,10 +142,10 @@ void Win(int koll){
 	 itoa(koll,ch,10);
 	 setbkcolor(0);
      setcolor(15);
-     strcat(ch," шагов");
-     outtextxy(290,125,"Вы выиграли!");      
+     strcat(ch," С€Р°РіРѕРІ");
+     outtextxy(290,125,"Р’С‹ РІС‹РёРіСЂР°Р»Рё!");      
      outtextxy(290,155,ch);  
-     outtextxy(290,155,"Введите имя?");
+     outtextxy(290,155,"Р’РІРµРґРёС‚Рµ РёРјСЏ?");
      int x0=290, i =0;
      char h[255] = "", str[255]="";
      while(1){
@@ -209,7 +209,7 @@ void Random(int a[], int N, int step){
      
 void Result(int koll){ 
      char ch[255];
-     char str[] = "Шагов: ";
+     char str[] = "РЁР°РіРѕРІ: ";
      strcat(str,itoa(koll,ch,10));
      setcolor(15); 
      setbkcolor(0);
@@ -243,15 +243,15 @@ int main(){
     FillRand(matrix,N);
     int m;
     cleardevice();
-    DrawNew(matrix,N); // рисование поля
-    int step; // эл-ов в строке, он же шаг для проверки на невозможное перемещение
+    DrawNew(matrix,N); // СЂРёСЃРѕРІР°РЅРёРµ РїРѕР»СЏ
+    int step; // СЌР»-РѕРІ РІ СЃС‚СЂРѕРєРµ, РѕРЅ Р¶Рµ С€Р°Рі РґР»СЏ РїСЂРѕРІРµСЂРєРё РЅР° РЅРµРІРѕР·РјРѕР¶РЅРѕРµ РїРµСЂРµРјРµС‰РµРЅРёРµ
     if(N == 8) step = 3; 
     else if(N == 15) step = 4;
     else if(N == 24) step = 5;
     else if(N == 99) step = 10;
     else if(N == 21){ Top(); goto menu;}
     BubbleSort(matrix,N);
-    Random(matrix,N,step); // перетасовка квадратов
+    Random(matrix,N,step); // РїРµСЂРµС‚Р°СЃРѕРІРєР° РєРІР°РґСЂР°С‚РѕРІ
     int g = search0(matrix,N);
     int koll = 0;
     while(1){
